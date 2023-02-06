@@ -1,0 +1,329 @@
+//ReturnTypeFunctions Assignment - Smart Home System V2.0
+//Max Edward | 2/6/23
+
+//The std::io brings the in and out operations from the standard library.
+use std::io;
+
+//Function 1
+//This function reads out the initial status of all devices at the beginning of the program.
+fn device_status(
+    _ac_value: bool,
+    _temp_value: u32,
+    _light_percent: u32,
+    _appliance_value: bool,
+    _sink_value: bool,
+    _door_value: bool,
+    _tv_value: bool,
+    _battery_percent: u32,
+    _security_value: bool,
+) {
+    //This checks the value and reads out the corresponding result.
+    if _ac_value == true {
+        println!("AC: ON");
+    }
+    if _ac_value == false {
+        println!("AC: OFF");
+    }
+    println!("Temperature: {}°F", _temp_value);
+    println!("Light Percentage: {}%", _light_percent);
+    if _appliance_value == true {
+        println!("Refrigerator: RUNNING");
+    }
+    if _appliance_value == false {
+        println!("Refrigerator: NOT RUNNING");
+    }
+    if _sink_value == true {
+        println!("Sink: RUNNING");
+    }
+    if _sink_value == false {
+        println!("Sink: NOT RUNNING");
+    }
+    if _door_value == true {
+        println!("Door: LOCKED");
+    }
+    if _door_value == false {
+        println!("Door: UNLOCKED");
+    }
+    if _tv_value == true {
+        println!("TV: ON");
+    }
+    if _tv_value == false {
+        println!("TV: OFF");
+    }
+    println!("Battery Backup Percentage: {}%", _battery_percent);
+    if _security_value == true {
+        println!("Security System: ONLINE");
+    }
+    if _security_value == false {
+        println!("Security System: OFFLINE");
+    }
+}
+
+//Function 2
+//This function takes the current AC value and flips it to the opposite value.
+fn check_ac(mut _ac_value: bool) -> bool {
+    //Takes in a bool variable, output is expected to be a bool variable.
+    //Loop to break out of if statement. Prevents the second if value messing with the first if value.
+    loop {
+        if _ac_value == true {
+            _ac_value = false;
+            break;
+        }
+        if _ac_value == false {
+            _ac_value = true;
+            break;
+        }
+    }
+    return _ac_value; //Return the flipped value.
+}
+
+//Function 3
+//This function takes the current temperature value and sets it to the new value the user input.
+fn check_temp(_temp_value: u32) {
+    //Takes in a u32 variable, no output needed as we are using a print statement.
+    println!("\nThe temperature has been set to {}°F.", _temp_value);
+}
+
+//Function 4
+//This function takes the current light value and sets it to the new value the user input.
+fn check_light(_light_percent: u32) {
+    //Takes in a u32 variable, no output needed as we are using a print statement.
+    println!("\nThe light has been set to {}%.", _light_percent);
+}
+
+//Function 5
+//This function takes the current appliance value and flips it to the opposite value.
+fn check_appliance(mut _appliance_value: bool) -> bool {
+    loop {
+        if _appliance_value == true {
+            _appliance_value = false;
+            break;
+        }
+        if _appliance_value == false {
+            _appliance_value = true;
+            break;
+        }
+    }
+    return _appliance_value;
+}
+
+//Function 6
+//This function takes the current sink value and flips it to the opposite value.
+fn check_sink(mut _sink_value: bool) -> bool {
+    loop {
+        if _sink_value == true {
+            _sink_value = false;
+            break;
+        }
+        if _sink_value == false {
+            _sink_value = true;
+            break;
+        }
+    }
+    return _sink_value;
+}
+
+//Function 7
+//This function takes the current door value and flips it to the opposite value.
+fn check_door(mut _door_value: bool) -> bool {
+    loop {
+        if _door_value == true {
+            _door_value = false;
+            break;
+        }
+        if _door_value == false {
+            _door_value = true;
+            break;
+        }
+    }
+    return _door_value;
+}
+
+//Function 8
+//This function takes the current TV value and flips it to the opposite value.
+fn check_tv(mut _tv_value: bool) -> bool {
+    loop {
+        if _tv_value == true {
+            _tv_value = false;
+            break;
+        }
+        if _tv_value == false {
+            _tv_value = true;
+            break;
+        }
+    }
+    return _tv_value;
+}
+
+//Function 9
+//This function checks the current battery percentage and reads it out to the user, as there is no change that can be done (cannot recharge battery backup).
+fn check_battery(_battery_percent: u32) {
+    println!("\nYou cannot change the battery percentage.");
+    println!("The Battery Backup Percentage is {}%.", _battery_percent);
+}
+
+//Function 10
+//This function checks the current security system value and flips it to the opposite value.
+fn check_security(mut _security_value: bool) -> bool {
+    loop {
+        if _security_value == true {
+            _security_value = false;
+            break;
+        }
+        if _security_value == false {
+            _security_value = true;
+            break;
+        }
+    }
+    return _security_value;
+}
+
+//This is the main function, separate from the above functions.
+fn main() {
+    let mut _account_name = String::new(); //String for the account name.
+    let _ac_value: bool = true; //Boolean for the AC.
+    let mut _temp_value: u32 = 90; //Unsigned 32 Int for the Temperature.
+    let mut _light_percent: u32 = 0; //Unsigned 32 Int for the Light.
+    let mut _appliance_value: bool = false; //Boolean for the Refrigerator.
+    let mut _sink_value: bool = true; //Boolean for the Sink.
+    let mut _door_value: bool = false; //Boolean for the Door.
+    let mut _tv_value: bool = true; //Boolean for the TV.
+    let _battery_percent: u32 = 56; //Unsigned 32 Int fopr the Battery Backup.
+    let mut _security_value: bool = false; //Boolean for the Security System.
+
+    //Getting user input for account signin.
+    println!("\nHello! Welcome to SmartHomeCentral V2.0\n");
+    println!("To proceed, enter your account name.");
+
+    //Get input from user.
+    println!("\nAccount Name:");
+    io::stdin().read_line(&mut _account_name).unwrap();
+
+    //Read out current status of devices.
+    println!("\nWelcome back, {}", _account_name);
+    println!("This is the current status of your devices:");
+    device_status(
+        _ac_value,
+        _temp_value,
+        _light_percent,
+        _appliance_value,
+        _sink_value,
+        _door_value,
+        _tv_value,
+        _battery_percent,
+        _security_value,
+    );
+
+    //Get input from user.
+    println!("\nEnter the name of the smart device you would like to interact with:");
+    println!("OPTIONS:");
+    println!("AC");
+    println!("Temperature");
+    println!("Light");
+    println!("Refrigerator");
+    println!("Sink");
+    println!("Door");
+    println!("TV");
+    println!("Battery");
+    println!("Security\n");
+
+    let mut _option_choice = String::new(); //String for user choice.
+
+    //Take user input, assign to String.
+    io::stdin().read_line(&mut _option_choice).unwrap();
+    let _option_choice = _option_choice.trim();
+    let mut _input = String::new();
+
+    //AC option
+    if _option_choice == "AC" {
+        let _ac_value = check_ac(_ac_value); //Reassigns the variable after passing it through the function
+
+        if _ac_value == true {
+            println!("\nThe AC has been turned ON.");
+        }
+        if _ac_value == false {
+            println!("\nThe AC has been turned OFF.")
+        }
+    }
+
+    //Temperature option
+    if _option_choice == "Temperature" {
+        println!("\nWhat would you like to set the temperature to?");
+        io::stdin().read_line(&mut _input).unwrap();
+        let _temp_value = _input.trim().parse::<u32>().unwrap();
+        check_temp(_temp_value);
+    }
+
+    //Light option
+    if _option_choice == "Light" {
+        println!("\nWhat would you like to set the light to?");
+        io::stdin().read_line(&mut _input).unwrap();
+        let _light_percent = _input.trim().parse::<u32>().unwrap();
+        check_light(_light_percent);
+    }
+
+    //Refrigerator option
+    if _option_choice == "Refrigerator" {
+        let _appliance_value = check_appliance(_appliance_value);
+
+        if _appliance_value == true {
+            println! {"\nThe Refrigerator is RUNNING."}
+        }
+        if _appliance_value == false {
+            println! {"\nThe Refrigerator is NOT RUNNING."}
+        }
+    }
+
+    //Sink option
+    if _option_choice == "Sink" {
+        let _sink_value = check_sink(_sink_value);
+
+        if _sink_value == true {
+            println! {"\nThe Sink is RUNNING."}
+        }
+        if _sink_value == false {
+            println! {"\nThe Sink is NOT RUNNING."}
+        }
+    }
+
+    //Door option
+    if _option_choice == "Door" {
+        let _door_value = check_door(_door_value);
+
+        if _door_value == true {
+            println!("\nThe Door is LOCKED.")
+        }
+        if _door_value == false {
+            println!("\nThe Door is UNLOCKED.")
+        }
+    }
+
+    //TV option
+    if _option_choice == "TV" {
+        let _tv_value = check_tv(_tv_value);
+
+        if _tv_value == true {
+            println!("\nThe TV is ON.")
+        }
+        if _tv_value == false {
+            println!("\nThe TV is OFF.")
+        }
+    }
+
+    //Battery option
+    if _option_choice == "Battery" {
+        check_battery(_battery_percent);
+    }
+
+    //Security option
+    if _option_choice == "Security" {
+        let _security_value = check_security(_security_value);
+
+        if _security_value == true {
+            println!("\nThe Security System is ONLINE.")
+        }
+        if _security_value == false {
+            println!("\nThe Security System is OFFLINE.")
+        }
+    }
+}
